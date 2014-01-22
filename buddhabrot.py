@@ -26,40 +26,40 @@ counters = np.zeros((WIDTH, HEIGHT)) #Array to track the paths of each C
 img = Image.new('RGB', (WIDTH, HEIGHT), (0, 0, 0)) #Setup new blank image
  
 for i in xrange(points):
-#===========================================================================
-# Look for a complex point C that is not in one of the two main Mandelbrot
-# bulbs.
-#===========================================================================
-check = True
-
-while check:
-  realPart = uniform(-2.0, 0.7)
-  imagPart = uniform(-1.3, 1.3)
-  q = (realPart - 1/4.0)**2 + imagPart**2
-  check = q * (q + (realPart - 1/4.0)) < (1/4.0 * imagPart**2)
+  #===========================================================================
+  # Look for a complex point C that is not in one of the two main Mandelbrot
+  # bulbs.
+  #===========================================================================
+  check = True
   
-#===========================================================================
-# Iterate through the sequence and keeep track of the path through the
-# complex region being mapped to the screen.
-#===========================================================================
-
-z = 0
-path = []
-C = complex(realPart, imagPart)
-
-for j in xrange(iterations):
-  z = z**2 + C
-  path.extend([z.imag, z.real])
-  
-  if abs(z) > escapeRadius:
-    while path:
-      xValue = int(path.pop() * ratioReal) + WIDTH / 2
-      yValue = int(path.pop() * ratioImag) + HEIGHT / 2
+  while check:
+    realPart = uniform(-2.0, 0.7)
+    imagPart = uniform(-1.3, 1.3)
+    q = (realPart - 1/4.0)**2 + imagPart**2
+    check = q * (q + (realPart - 1/4.0)) < (1/4.0 * imagPart**2)
     
-    if xValue > 0 and yValue > 0 and xValue < WIDTH and yValue < HEIGHT:
-      counters[xValue][yValue] += 1
-      counters[xValue][-yValue] += 1
-      break
+  #===========================================================================
+  # Iterate through the sequence and keeep track of the path through the
+  # complex region being mapped to the screen.
+  #===========================================================================
+
+  z = 0
+  path = []
+  C = complex(realPart, imagPart)
+  
+  for j in xrange(iterations):
+    z = z**2 + C
+    path.extend([z.imag, z.real])
+    
+    if abs(z) > escapeRadius:
+      while path:
+        xValue = int(path.pop() * ratioReal) + WIDTH / 2
+        yValue = int(path.pop() * ratioImag) + HEIGHT / 2
+      
+      if xValue > 0 and yValue > 0 and xValue < WIDTH and yValue < HEIGHT:
+        counters[xValue][yValue] += 1
+        counters[xValue][-yValue] += 1
+        break
  
 #===============================================================================
 # Create the image by converting the hit counts into scaled color data for each
