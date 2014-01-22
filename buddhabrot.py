@@ -4,13 +4,6 @@ from math import sqrt
 from random import uniform
 import Image
  
-#===============================================================================
-# Randomly choose points in a specified complex region. Use an array to keep
-# track of the path a divergent initial condition takes through the complex
-# region. Finally, map that array of pixel hit counts to the screen as a grid
-# of scaled color data.
-#===============================================================================
- 
 WIDTH, HEIGHT = 1000, 1000
  
 iterations = 100 #Number of series terms to sum
@@ -25,11 +18,18 @@ counters = np.zeros((WIDTH, HEIGHT)) #Array to track the paths of each C
  
 img = Image.new('RGB', (WIDTH, HEIGHT), (0, 0, 0)) #Setup new blank image
  
+#===============================================================================#
+# Randomly choose points in a specified complex region. Use an array to keep    #
+# track of the path a divergent initial condition takes through the complex     #
+# region. Finally, map that array of pixel hit counts to the screen as a grid   #
+# of scaled color data.                                                         #
+#===============================================================================#
+ 
 for i in xrange(points):
-  #===========================================================================
-  # Look for a complex point C that is not in one of the two main Mandelbrot
-  # bulbs.
-  #===========================================================================
+  #=============================================================================#
+  # Look for a complex point C that is not in one of the two main Mandelbrot    #
+  # bulbs.                                                                      #
+  #=============================================================================#
   check = True
   
   while check:
@@ -38,10 +38,10 @@ for i in xrange(points):
     q = (realPart - 1/4.0)**2 + imagPart**2
     check = q * (q + (realPart - 1/4.0)) < (1/4.0 * imagPart**2)
     
-  #===========================================================================
-  # Iterate through the sequence and keeep track of the path through the
-  # complex region being mapped to the screen.
-  #===========================================================================
+  #=============================================================================#
+  # Iterate through the sequence and keeep track of the path through the        #
+  # complex region being mapped to the screen.                                  #
+  #=============================================================================#
 
   z = 0
   path = []
@@ -61,10 +61,10 @@ for i in xrange(points):
         counters[xValue][-yValue] += 1
         break
  
-#===============================================================================
-# Create the image by converting the hit counts into scaled color data for each
-# pixel on the screen. Save image and start default image viewer from the OS.
-#===============================================================================
+#===============================================================================#
+# Create the image by converting the hit counts into scaled color data for each #
+# pixel on the screen. Save image and start default image viewer from the OS.   #
+#===============================================================================#
 
 maxCount = np.amax(counters)
 
