@@ -31,38 +31,46 @@ for i in xrange(points):
 # bulbs.
 #===========================================================================
 check = True
+
 while check:
-realPart = uniform(-2.0, 0.7)
-imagPart = uniform(-1.3, 1.3)
-q = (realPart - 1/4.0)**2 + imagPart**2
-check = q * (q + (realPart - 1/4.0)) < (1/4.0 * imagPart**2)
+  realPart = uniform(-2.0, 0.7)
+  imagPart = uniform(-1.3, 1.3)
+  q = (realPart - 1/4.0)**2 + imagPart**2
+  check = q * (q + (realPart - 1/4.0)) < (1/4.0 * imagPart**2)
+  
 #===========================================================================
 # Iterate through the sequence and keeep track of the path through the
 # complex region being mapped to the screen.
 #===========================================================================
+
 z = 0
 path = []
 C = complex(realPart, imagPart)
+
 for j in xrange(iterations):
-z = z**2 + C
-path.extend([z.imag, z.real])
-if abs(z) > escapeRadius:
-while path:
-xValue = int(path.pop() * ratioReal) + WIDTH / 2
-yValue = int(path.pop() * ratioImag) + HEIGHT / 2
-if xValue > 0 and yValue > 0 and xValue < WIDTH and yValue < HEIGHT:
-counters[xValue][yValue] += 1
-counters[xValue][-yValue] += 1
-break
+  z = z**2 + C
+  path.extend([z.imag, z.real])
+  
+  if abs(z) > escapeRadius:
+    while path:
+      xValue = int(path.pop() * ratioReal) + WIDTH / 2
+      yValue = int(path.pop() * ratioImag) + HEIGHT / 2
+    
+    if xValue > 0 and yValue > 0 and xValue < WIDTH and yValue < HEIGHT:
+      counters[xValue][yValue] += 1
+      counters[xValue][-yValue] += 1
+      break
  
 #===============================================================================
 # Create the image by converting the hit counts into scaled color data for each
 # pixel on the screen. Save image and start default image viewer from the OS.
 #===============================================================================
+
 maxCount = np.amax(counters)
+
 for x in xrange(WIDTH):
-for y in xrange(HEIGHT):
-tmp = int(255 * (sqrt(counters[x][y] / maxCount)))
-img.putpixel((y, x), (tmp, tmp, tmp))
-img.save("C:/PythonWorkspace/Images/ganeshfractal.png")
-os.startfile("C:/PythonWorkspace/Images/ganeshfractal.png")
+  for y in xrange(HEIGHT):
+    tmp = int(255 * (sqrt(counters[x][y] / maxCount)))
+    img.putpixel((y, x), (tmp, tmp, tmp))
+    img.save("C:/PythonWorkspace/Images/ganeshfractal.png")
+    os.startfile("C:/PythonWorkspace/Images/ganeshfractal.png")
