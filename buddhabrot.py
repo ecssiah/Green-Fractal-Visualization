@@ -56,10 +56,11 @@ for i in xrange(points):
         xValue = int(path.pop() * ratioReal) + WIDTH / 2
         yValue = int(path.pop() * ratioImag) + HEIGHT / 2
       
-      if xValue > 0 and yValue > 0 and xValue < WIDTH and yValue < HEIGHT:
-        counters[xValue][yValue] += 1
-        counters[xValue][-yValue] += 1
-        break
+        if xValue > 0 and yValue > 0 and xValue < WIDTH and yValue < HEIGHT:
+          counters[xValue][yValue] += 1
+          counters[xValue][-yValue] += 1
+      
+      break
  
 #===============================================================================#
 # Create the image by converting the hit counts into scaled color data for each #
@@ -73,4 +74,3 @@ for x in xrange(WIDTH):
     tmp = int(255 * (sqrt(counters[x][y] / maxCount)))
     img.putpixel((y, x), (tmp, tmp, tmp))
     img.save("C:/PythonWorkspace/Images/ganeshfractal.png")
-    os.startfile("C:/PythonWorkspace/Images/ganeshfractal.png")
