@@ -42,4 +42,4 @@ for x in xrange(width):
     brightness = int(255 * sqrt(counters[x][y] / max_count))
     img.putpixel((y, x), (brightness - 10,  brightness - 20, brightness - 30))
 
-img.save("./green-fractal.png")
+img.save("./examples/green-fractal.png")
