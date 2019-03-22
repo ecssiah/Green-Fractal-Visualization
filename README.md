@@ -14,7 +14,7 @@ Here is an example of a generating function:
 
 ```javascript
 Complex z, w = 0;
-Complex C = random();
+Complex C = random(range);
 
 for i in iterations:
   w = z.conjugate();
