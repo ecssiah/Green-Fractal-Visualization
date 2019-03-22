@@ -13,11 +13,11 @@ My implementation allows for a wide variety of generating functions, rather than
 Here is an example of a generating function:
 
 ```javascript
-Complex z = 0;
+Complex z, w = 0;
 Complex C = random();
 
 for i in iterations:
-  Complex w = z.conjugate();
+  w = z.conjugate();
   z = p * w^3 + q * w^2 + r * w + C
 ```
 
