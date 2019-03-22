@@ -4,7 +4,7 @@ This python script generates fractals using a variation of the Buddhabrot method
 
 An array of counters is used to track every point that is hit before a sample point escapes. The size of this array is chosen so that it will map directly to the pixels in the image that is being produced. Every time a point lands within the small area associated with a particular pixel it is incremented by one.
 
-After a large number of points have been tested, this array of counters is used as a heat map to produce the image. Each count is divided by the largest value in the counters array, so that the largest value has a value of 1. This will be the brightest pixel in the image. All other pixels will have a brightness value somewhere between 0 and 1.
+After a large number of points have been tested, this array of counters is used as a heat map to produce the image. Each count is divided by the largest value in the counters array, so that the points hit most often are set to 1. These will be the brightest pixels in the image. All other pixels will have a brightness somewhere between 0 and 1.
 
 Here is Melinda’s own page describing her process and displaying a number of examples: [Superliminal: Buddhabrot](http://superliminal.com/fractals/bbrot/bbrot.htm)
 
