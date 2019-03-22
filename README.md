@@ -13,9 +13,12 @@ My implementation allows for a wide variety of generating functions, rather than
 Here is an example of a generating function:
 
 ```javascript
-w = conjugate(z)
+Complex z = 0;
+Complex C = random();
 
-z = p * w^3 + q * w^2 + r * w + C
+for i in iterations:
+  Complex w = z.conjugate();
+  z = p * w^3 + q * w^2 + r * w + C
 ```
 
 `C` is the sample point for each test, which is chosen at random from points within the desired complex range.
