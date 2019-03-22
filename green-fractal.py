@@ -3,19 +3,19 @@ from math import sqrt
 from random import uniform
 from PIL import Image, ImageDraw
 
-output_number = 4
+output_number = 5
 
 width, height = 512, 512
 counters = np.zeros((width, height))
 img = Image.new('RGB', (width, height), (0, 0, 0))
 
 iterations = 200
-points = 8000000
+points = 10000000
 esc_radius = 3.0
 real_dim, imag_dim = 4.0, 4.0
 real_ratio = width / real_dim
 imag_ratio = height / imag_dim
-a, b, c, d, e = 0.0, -0.2, -0.4, -0.8, -1.0
+a, b, c, d, e = 0.2, -0.2, 0.4, -0.8, -1.0
 
 for i in xrange(points):
   z = 0
