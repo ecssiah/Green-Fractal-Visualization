@@ -18,7 +18,7 @@ Complex C = random(range);
 
 for i in iterations:
   w = z.conjugate();
-  z = p*w³ + q*w² + r*w + C
+  z = p * w**3 + q * w**2 + r * w**1 + C
 ```
 
 `C` is the sample point for each test, which is chosen at random from points within the desired complex range.
