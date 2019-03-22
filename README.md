@@ -10,15 +10,18 @@ Here is Melinda’s own page describing her process and displaying a number of e
 
 My implementation allows for a wide variety of generating functions, rather than just the traditional Mandelbrot generator. Each term also has a coefficient applied to it, and at each step in the process the previous value is conjugated before applying the equation again. This significantly changes the character of the images produced.
 
-Here is an example of a generating function:
+Here is an example of a generating function in pseudocode: 
 
-```javascript
-Complex z, w = 0;
+```
+Double p, q, r;
+
+Complex w = 0;
+Complex z = 0;
 Complex C = random(range);
 
 for i in iterations:
   w = z.conjugate();
-  z = p * w**3 + q * w**2 + r * w**1 + C
+  z = p * w^3 + q * w^2 + r * w^1 + C
 ```
 
 `C` is the sample point for each test, which is chosen at random from points within the desired complex range.
